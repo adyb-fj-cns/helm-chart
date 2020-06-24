@@ -12,9 +12,9 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ include "bluegreen.name" . }}
-    #app.kubernetes.io/name: {{ include "bluegreen.name" . }}
-    #app.kubernetes.io/instance: {{ .Release.Name }}
+    #app: {{ include "bluegreen.name" . }}
+    app.kubernetes.io/name: {{ include "bluegreen.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
 ---
 apiVersion: v1
 kind: Service
@@ -30,6 +30,6 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ include "bluegreen.name" . }}
-    #app.kubernetes.io/name: {{ include "bluegreen.name" . }}
-    #app.kubernetes.io/instance: {{ .Release.Name }}
+    #app: {{ include "bluegreen.name" . }}
+    app.kubernetes.io/name: {{ include "bluegreen.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

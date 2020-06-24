@@ -9,15 +9,15 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: {{ include "bluegreen.name" . }}
-      #app.kubernetes.io/name: {{ include "bluegreen.name" . }}
-      #app.kubernetes.io/instance: {{ .Release.Name }}
+      #app: {{ include "bluegreen.name" . }}
+      app.kubernetes.io/name: {{ include "bluegreen.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ include "bluegreen.name" . }}
-        #app.kubernetes.io/name: {{ include "bluegreen.name" . }}
-        #app.kubernetes.io/instance: {{ .Release.Name }}
+        #app: {{ include "bluegreen.name" . }}
+        app.kubernetes.io/name: {{ include "bluegreen.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -60,8 +60,8 @@ spec:
     {{- end }}
   strategy:
     blueGreen:
-      activeService: bluegreen-active
-      previewService: bluegreen-preview
+      activeService: {{ include "bluegreen.fullname" . }}-active
+      previewService: {{ include "bluegreen.fullname" . }}-preview
       autoPromotionEnabled: false
     #canary:
     #  steps:
