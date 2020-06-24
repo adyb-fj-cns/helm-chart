@@ -6,15 +6,18 @@ metadata:
 {{ include "bluegreen.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "bluegreen.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      app: {{ include "bluegreen.name" . }}
+      #app.kubernetes.io/name: {{ include "bluegreen.name" . }}
+      #app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "bluegreen.name" . }}
-        app.kubernetes.io/instance: {{ .Release.Name }}
+        app: {{ include "bluegreen.name" . }}
+        #app.kubernetes.io/name: {{ include "bluegreen.name" . }}
+        #app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -56,8 +59,11 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
   strategy:
-  # ----- Everything above this comment are the same as a deployment -----
-    canary: # A new field that used to provide configurable options for a Canary strategy
-      steps:
-      - setWeight: 20
-      - pause: {}
+    blueGreen:
+      activeService: bluegreen-active
+      previewService: bluegreen-preview
+      autoPromotionEnabled: false
+    #canary:
+    #  steps:
+    #  - setWeight: 20
+    #  - pause: {}
