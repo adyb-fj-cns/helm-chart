@@ -3,9 +3,9 @@ entries:
   bluegreen:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-06-26T12:28:56.414268+01:00"
+    created: "2020-06-26T12:37:01.143502+01:00"
     description: A Helm chart for Kubernetes
-    digest: cc3866d64530b6b389fc6617f9f98341c273b8b58daef3be730d9c74cb4ec612
+    digest: 7ba74005ec5f060787f071fff9064c88f04013382d2de4ddba9f5618eaacb970
     name: bluegreen
     urls:
     - https://adyb-fj-cns.github.io/helm-chart/bluegreen-0.1.0.tgz
@@ -13,11 +13,11 @@ entries:
   demo:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2020-06-26T12:28:56.414684+01:00"
+    created: "2020-06-26T12:37:01.14377+01:00"
     description: A Helm chart for Kubernetes
-    digest: e363500d1609b2840195a2bbca94fc57e4a81190723372d595e9bc3ccbfa456a
+    digest: 9e01f8af212b4856d3262fc4b6fcace1152c6a487e465611fab984f332c1512e
     name: demo
     urls:
     - https://adyb-fj-cns.github.io/helm-chart/demo-0.1.0.tgz
     version: 0.1.0
-generated: "2020-06-26T12:28:56.413849+01:00"
+generated: "2020-06-26T12:37:01.14305+01:00"
